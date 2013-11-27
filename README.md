@@ -9,6 +9,3 @@ Assignments
 Assignment 0: Complete Card Flipping Example from Lecture 2 Slides
 - tag `assignmentzero`
 
-
-
-
