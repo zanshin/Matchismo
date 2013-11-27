@@ -9,21 +9,38 @@
 #import "CardGameViewController.h"
 
 @interface CardGameViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (nonatomic) int flipCount;
 
 @end
 
 @implementation CardGameViewController
 
-- (void)viewDidLoad
+/* 
+ * Extended flipCount setter to adjust UI when count changes
+ */
+- (void)setFlipCount:(int)flipCount
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    _flipCount = flipCount;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
+    NSLog(@"flipCount changed to %d", self.flipCount);
 }
 
-- (void)didReceiveMemoryWarning
+/*
+ * When cardButton is touched flip card over and increment count
+ */
+- (IBAction)touchCardButton:(UIButton *)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if ([sender.currentTitle length]) {
+        [sender setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
+        [sender setTitle:@"" forState:UIControlStateNormal];
+    } else {
+        [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"] forState:UIControlStateNormal];
+        [sender setTitle:@"A♣" forState:UIControlStateNormal];
+    }
+    
+    self.flipCount++;
+    
 }
 
 @end
