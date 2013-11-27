@@ -40,18 +40,30 @@
 }
 
 /*
- * When cardButton is touched flip card over and increment count
+ * When cardButton is touched flip card over and increment count.
+ * Randomly choose card from deck
  */
 - (IBAction)touchCardButton:(UIButton *)sender
 {
-    if ([sender.currentTitle length]) {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
-        [sender setTitle:@"" forState:UIControlStateNormal];
-    } else {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"] forState:UIControlStateNormal];
-        [sender setTitle:@"A♣" forState:UIControlStateNormal];
+    Card *card = [self.deck drawRandomCard];
+    if (card)
+        if ([sender.currentTitle length]) {
+            [sender setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
+            [sender setTitle:@"" forState:UIControlStateNormal];
+            
+            // put the card back in the deck, since we didn't show anything on this flip
+            [self.deck addCard:card atTop:NO];
+        } else {
+            [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"]
+                              forState:UIControlStateNormal];
+            [sender setTitle:card.contents forState:UIControlStateNormal];
+        } else {
+            
+            // no more cards, hide the button, i.e, the deck, and don't count this flip
+            sender.hidden = YES;
+            self.flipCount--;
     }
-    
+
     self.flipCount++;
     
 }
