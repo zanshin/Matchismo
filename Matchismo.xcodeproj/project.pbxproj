@@ -23,6 +23,7 @@
 		D814FC881844E93700DA4F78 /* MatchismoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D814FC871844E93700DA4F78 /* MatchismoTests.m */; };
 		D814FC931846560900DA4F78 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = D814FC921846560900DA4F78 /* Card.m */; };
 		D814FC971846585800DA4F78 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = D814FC961846585800DA4F78 /* PlayingCard.m */; };
+		D814FC9A18465CFB00DA4F78 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = D814FC9918465CFB00DA4F78 /* Deck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		D814FC921846560900DA4F78 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
 		D814FC951846585800DA4F78 /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCard.h; path = Model/PlayingCard.h; sourceTree = "<group>"; };
 		D814FC961846585800DA4F78 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingCard.m; path = Model/PlayingCard.m; sourceTree = "<group>"; };
+		D814FC9818465CFB00DA4F78 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Deck.h; path = Model/Deck.h; sourceTree = "<group>"; };
+		D814FC9918465CFB00DA4F78 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Deck.m; path = Model/Deck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,8 @@
 				D814FC921846560900DA4F78 /* Card.m */,
 				D814FC951846585800DA4F78 /* PlayingCard.h */,
 				D814FC961846585800DA4F78 /* PlayingCard.m */,
+				D814FC9818465CFB00DA4F78 /* Deck.h */,
+				D814FC9918465CFB00DA4F78 /* Deck.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				D814FC731844E93700DA4F78 /* CardGameViewController.m in Sources */,
 				D814FC691844E93700DA4F78 /* main.m in Sources */,
 				D814FC971846585800DA4F78 /* PlayingCard.m in Sources */,
+				D814FC9A18465CFB00DA4F78 /* Deck.m in Sources */,
 				D814FC931846560900DA4F78 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
