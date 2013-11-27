@@ -21,6 +21,7 @@
 		D814FC7E1844E93700DA4F78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D814FC601844E93700DA4F78 /* UIKit.framework */; };
 		D814FC861844E93700DA4F78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D814FC841844E93700DA4F78 /* InfoPlist.strings */; };
 		D814FC881844E93700DA4F78 /* MatchismoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D814FC871844E93700DA4F78 /* MatchismoTests.m */; };
+		D814FC931846560900DA4F78 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = D814FC921846560900DA4F78 /* Card.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		D814FC831844E93700DA4F78 /* MatchismoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MatchismoTests-Info.plist"; sourceTree = "<group>"; };
 		D814FC851844E93700DA4F78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D814FC871844E93700DA4F78 /* MatchismoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchismoTests.m; sourceTree = "<group>"; };
+		D814FC911846560900DA4F78 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
+		D814FC921846560900DA4F78 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,7 @@
 				D814FC6E1844E93700DA4F78 /* Main.storyboard */,
 				D814FC711844E93700DA4F78 /* CardGameViewController.h */,
 				D814FC721844E93700DA4F78 /* CardGameViewController.m */,
+				D814FC941846565B00DA4F78 /* Model */,
 				D814FC741844E93700DA4F78 /* Images.xcassets */,
 				D814FC631844E93700DA4F78 /* Supporting Files */,
 			);
@@ -150,6 +154,15 @@
 				D814FC841844E93700DA4F78 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D814FC941846565B00DA4F78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D814FC911846560900DA4F78 /* Card.h */,
+				D814FC921846560900DA4F78 /* Card.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +266,7 @@
 				D814FC6D1844E93700DA4F78 /* CardGameAppDelegate.m in Sources */,
 				D814FC731844E93700DA4F78 /* CardGameViewController.m in Sources */,
 				D814FC691844E93700DA4F78 /* main.m in Sources */,
+				D814FC931846560900DA4F78 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
