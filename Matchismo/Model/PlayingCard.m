@@ -60,4 +60,28 @@
     return [rankStrings[self.rank] stringByAppendingString:self.suit];
 }
 
+// Matching suit is a 1 in 4 proposition = 1 point.
+// Matching rank is a 1 in 13 proposition = 4 points.
+static const int MATCH_SUIT = 1;
+static const int MATCH_RANK = 4;
+
+/*
+ * Override match to provide better matching logic for Playing Cards
+ */
+- (int)match:(NSArray *)otherCards
+{
+    int score = 0;
+    
+    if ([otherCards count] == 1) {
+        PlayingCard *otherCard = [otherCards firstObject];
+        if ([self.suit isEqualToString:otherCard.suit]) {
+            score = MATCH_SUIT;
+        } else if (self.rank == otherCard.rank) {
+            score = MATCH_RANK;
+        }
+    }
+    
+    return score;
+}
+
 @end

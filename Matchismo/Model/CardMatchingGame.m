@@ -64,7 +64,7 @@ static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
 /*
- * 2-card matching game logic. 
+ * 2-card matching game logic.
  */
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
