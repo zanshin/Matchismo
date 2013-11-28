@@ -172,9 +172,9 @@
 				D814FC921846560900DA4F78 /* Card.m */,
 				D814FC951846585800DA4F78 /* PlayingCard.h */,
 				D814FC961846585800DA4F78 /* PlayingCard.m */,
-				D814FC9818465CFB00DA4F78 /* Deck.h */,
 				D814FC9B184660A200DA4F78 /* PlayingCardDeck.h */,
 				D814FC9C184660A200DA4F78 /* PlayingCardDeck.m */,
+				D814FC9818465CFB00DA4F78 /* Deck.h */,
 				D814FC9918465CFB00DA4F78 /* Deck.m */,
 			);
 			name = Model;
@@ -493,6 +493,7 @@
 				D814FC8D1844E93700DA4F78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D814FC8E1844E93700DA4F78 /* Build configuration list for PBXNativeTarget "MatchismoTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +502,7 @@
 				D814FC901844E93700DA4F78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

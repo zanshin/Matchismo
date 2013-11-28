@@ -45,27 +45,23 @@
  */
 - (IBAction)touchCardButton:(UIButton *)sender
 {
-    Card *card = [self.deck drawRandomCard];
-    if (card)
-        if ([sender.currentTitle length]) {
-            [sender setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
-            [sender setTitle:@"" forState:UIControlStateNormal];
-            
-            // put the card back in the deck, since we didn't show anything on this flip
-            [self.deck addCard:card atTop:NO];
-        } else {
+    
+    if ([sender.currentTitle length]) {
+        [sender setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
+        [sender setTitle:@"" forState:UIControlStateNormal];
+        self.flipCount++;
+
+    } else {
+        Card *card = [self.deck drawRandomCard];
+        if (card) {
             [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"]
                               forState:UIControlStateNormal];
             [sender setTitle:card.contents forState:UIControlStateNormal];
-    } else {
-        
-        // no more cards, hide the button, i.e, the deck, and don't count this flip
-        sender.hidden = YES;
-        self.flipCount--;
+            self.flipCount++;
+
+        }
     }
 
-    self.flipCount++;
-    
 }
 
 @end
