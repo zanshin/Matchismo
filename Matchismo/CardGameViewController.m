@@ -57,11 +57,11 @@
             [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"]
                               forState:UIControlStateNormal];
             [sender setTitle:card.contents forState:UIControlStateNormal];
-        } else {
-            
-            // no more cards, hide the button, i.e, the deck, and don't count this flip
-            sender.hidden = YES;
-            self.flipCount--;
+    } else {
+        
+        // no more cards, hide the button, i.e, the deck, and don't count this flip
+        sender.hidden = YES;
+        self.flipCount--;
     }
 
     self.flipCount++;
