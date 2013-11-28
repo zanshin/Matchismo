@@ -9,7 +9,7 @@ Assignments
 Assignment 0: Complete Card Flipping Example from Lecture 2 Slides
 - tag `assignment0`
 
-Assignmetn 1: Matchismo
+Assignment 1: Matchismo
 - tag `assignment1`
 
 
