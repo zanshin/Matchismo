@@ -48,6 +48,17 @@
     [self.game chooseCardAtIndex:cardIndex];
     [self updateUI];
 }
+
+/*
+ * Deal a new set of cards, i.e., start a new game and update the UI.
+ */
+- (IBAction)touchDealButton
+{
+    self.game = nil;
+    [self updateUI];
+}
+
+
 /*
  * Visit each card in the UI and ensure that it represents the model correctly.
  */
