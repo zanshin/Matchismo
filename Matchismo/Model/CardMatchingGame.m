@@ -10,6 +10,7 @@
 
 @interface CardMatchingGame()
 @property (nonatomic, readwrite) NSInteger score;
+@property (nonatomic, readwrite) NSString *results;
 @property (nonatomic, strong) NSMutableArray *cards; // of Cards
 @end
 
@@ -69,6 +70,8 @@ static const int COST_TO_CHOOSE = 1;
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
     Card *card = [self cardAtIndex:index];
+    int flipScore = 0;
+    self.results = nil; // clear for this flip
     
     if (!card.isMatched) {
         if (card.isChosen) {
@@ -80,12 +83,18 @@ static const int COST_TO_CHOOSE = 1;
                 if (otherCard.isChosen && !otherCard.isMatched) {
                     int matchScore = [card match:@[otherCard]];
                     if (matchScore) {
-                        self.score += matchScore * MATCH_BONUS;
+                        flipScore += matchScore * MATCH_BONUS;
+                        self.score += flipScore;
                         card.matched = YES;
                         otherCard.matched = YES;
+                        
+                        self.results = [NSString stringWithFormat:@"Matched %@ %@ for %d points.", card.contents, otherCard.contents, flipScore];
                     } else {
-                        self.score -= MISMATCH_PENALTY;
+                        flipScore -= MISMATCH_PENALTY;
+                        self.score -= flipScore;
                         otherCard.chosen = NO;
+                        
+                        self.results = [NSString stringWithFormat:@"%@ %@ don't match. %d points.", card.contents, otherCard.contents, flipScore];
                     }
                     break;
                 }
@@ -93,6 +102,12 @@ static const int COST_TO_CHOOSE = 1;
             
             self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
+            
+        }
+        
+        if (!self.results) {
+            self.results = [NSString stringWithFormat:@"%@ is flipped %@.",
+                            card.contents, (card.isChosen ? @"up" : @"down")];
         }
     }
 }
