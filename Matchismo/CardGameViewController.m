@@ -15,9 +15,9 @@
 @property (strong, nonatomic) Deck *deck;
 @property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (weak, nonatomic) IBOutlet UILabel *flipResultsLabel;
-
+@property (weak,   nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak,   nonatomic) IBOutlet UILabel *flipResultsLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *gameMode;
 @end
 
 @implementation CardGameViewController
@@ -60,6 +60,15 @@
     [self updateUI];
 }
 
+/*
+ * Selects 2 or 3-card matching game to play.
+ */
+- (IBAction)touchGameMode:(UISegmentedControl *)sender
+{
+    self.game.numberOfCardsToMatch = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+
+    NSLog(@"number of cards to match set to: %d", self.game.numberOfCardsToMatch);
+}
 
 /*
  * Visit each card in the UI and ensure that it represents the model correctly.

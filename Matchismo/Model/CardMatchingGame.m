@@ -59,6 +59,15 @@
     return nil;
 }
 
+/*
+ * Can't have fewer than 2 cards to match.
+ */
+- (int)numberOfCardsToMatch
+{
+    if (!_numberOfCardsToMatch) _numberOfCardsToMatch = 2;
+    return _numberOfCardsToMatch;
+}
+
 // Misses cost you 2 points. Matches get 4x bonus.
 static const int MISMATCH_PENALTY = 2;
 static const int MATCH_BONUS = 4;

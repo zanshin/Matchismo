@@ -317,7 +317,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdO-U7-kUd">
-                                <rect key="frame" x="20" y="439" width="225" height="21"/>
+                                <rect key="frame" x="20" y="439" width="88" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -341,11 +341,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zwu-hY-BMC">
+                                <rect key="frame" x="138" y="432" width="45" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="touchGameMode:" destination="vXZ-lx-hvc" eventType="valueChanged" id="aKa-5Y-Au9"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="flipResultsLabel" destination="a5I-8k-skM" id="Kh1-Ep-0tD"/>
+                        <outlet property="gameMode" destination="zwu-hY-BMC" id="QRE-W3-6D1"/>
                         <outlet property="scoreLabel" destination="qdO-U7-kUd" id="cEF-p2-RZz"/>
                         <outletCollection property="cardButtons" destination="shQ-Og-cQp" id="J5u-ri-dlM"/>
                         <outletCollection property="cardButtons" destination="2TI-If-HlE" id="QmE-Yr-bf8"/>
