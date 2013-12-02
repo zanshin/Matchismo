@@ -9,34 +9,35 @@
 #import "CardGameViewController.h"
 #import "Deck.h"
 #import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
-@property (nonatomic) int flipCount;
-
 @property (strong, nonatomic) Deck *deck;
-
+@property (strong, nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak,   nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak,   nonatomic) IBOutlet UILabel *flipResultsLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *gameMode;
 @end
 
 @implementation CardGameViewController
 
-/* 
- * Extended flipCount setter to adjust UI when count changes
+/*
+ * Lazily instantiate game when it is needed
  */
-- (void)setFlipCount:(int)flipCount
+- (CardMatchingGame *)game
 {
-    _flipCount = flipCount;
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-    NSLog(@"flipCount changed to %d", self.flipCount);
+    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                          usingDeck:[self createDeck]];
+    return _game;
 }
 
 /*
- * Lazily instantiate deck when it is needed
+ * Create a deck of cards
  */
-- (Deck *)deck
+- (Deck *)createDeck
 {
-    if (!_deck) _deck = [[PlayingCardDeck alloc] init];
-    return _deck;
+    return [[PlayingCardDeck alloc] init];
 }
 
 /*
@@ -45,23 +46,62 @@
  */
 - (IBAction)touchCardButton:(UIButton *)sender
 {
-    
-    if ([sender.currentTitle length]) {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
-        [sender setTitle:@"" forState:UIControlStateNormal];
-        self.flipCount++;
+    int cardIndex = [self.cardButtons indexOfObject:sender];
+    [self.game chooseCardAtIndex:cardIndex];
+    [self updateUI];
+}
 
-    } else {
-        Card *card = [self.deck drawRandomCard];
-        if (card) {
-            [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"]
-                              forState:UIControlStateNormal];
-            [sender setTitle:card.contents forState:UIControlStateNormal];
-            self.flipCount++;
+/*
+ * Deal a new set of cards, i.e., start a new game and update the UI.
+ */
+- (IBAction)touchDealButton
+{
+    self.game = nil;
+    [self updateUI];
+}
 
-        }
+/*
+ * Selects 2 or 3-card matching game to play.
+ */
+- (IBAction)touchGameMode:(UISegmentedControl *)sender
+{
+    self.game.numberOfCardsToMatch = [[sender titleForSegmentAtIndex:sender.selectedSegmentIndex] integerValue];
+
+    NSLog(@"number of cards to match set to: %d", self.game.numberOfCardsToMatch);
+}
+
+/*
+ * Visit each card in the UI and ensure that it represents the model correctly.
+ */
+-(void)updateUI
+{
+    for (UIButton *cardButton in self.cardButtons) {
+        int cardIndex = [self.cardButtons indexOfObject:cardButton];
+        Card *card = [self.game cardAtIndex:cardIndex];
+        
+        // have cardButton and card now, set cardButton attrobutes to match card values
+        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[self backgroundImageForCard:card] forState:UIControlStateNormal];
+        cardButton.enabled = !card.isMatched;
     }
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.flipResultsLabel.text = self.game.results;
+}
 
+/*
+ * utility method to return card contents only when it's chosen
+ */
+- (NSString *)titleForCard:(Card *)card
+{
+    return card.isChosen ? card.contents : @"";
+}
+
+/*
+ * utility method to return card image based on it's chosen state
+ */
+- (UIImage *)backgroundImageForCard:(Card *)card
+{
+    return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
 }
 
 @end
